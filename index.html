@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coachy App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .info-box {
+            background-color: #f8f8f8;
+            border-radius: 20px;
+            padding: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .info-box .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+
+        .tiktok-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .dots-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            overflow: hidden; /* Ensures the image respects the border-radius */
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .download-button {
+            background-color: #007aff;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        .download-button:hover {
+            background-color: #005ecb;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="info-box">
+            On <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" alt="TikTok" class="icon tiktok-icon"> you need to tap on the <span class="icon dots-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="8" r="1.5" fill="#8e8e93"/><circle cx="8" cy="8" r="1.5" fill="#8e8e93"/><circle cx="12" cy="8" r="1.5" fill="#8e8e93"/></svg></span> and then tap on "Open in browser" to download the app for free.
+        </div>
+
+        <div class="app-icon">
+            <img src="soothy-icon.png" alt="Soothy App Icon">
+        </div>
+
+        <h1>Search "Soothy" on the <br>App Store</h1>
+
+        <a href="https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881" class="download-button">Download App</a>
+    </div>
+
+</body>
+</html>
