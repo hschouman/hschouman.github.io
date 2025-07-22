@@ -126,6 +126,7 @@
         </div>
     </div>
     <div id="ua-info" style="margin-top:40px;font-size:0.9em;color:#888;word-break:break-all;"></div>
+    <div id="debug-info" style="margin-top:10px;font-size:0.95em;color:#b00;background:#ffeaea;padding:10px;border-radius:8px;max-width:500px;word-break:break-all;"></div>
 
 <script>
 (function() {
@@ -171,6 +172,25 @@
     }
     // Affiche le user agent dans le bloc ua-info
     //document.getElementById('ua-info').textContent = 'User Agent : ' + navigator.userAgent;
+    // Debug info
+    var debugMsg = '';
+    var bytedance = uaLower.includes('bytedancewebview');
+    var musical = uaLower.includes('musical_ly');
+    if (isAndroid) {
+      debugMsg = 'CONDITION: ANDROID\n';
+    } else if (isWebview(ua)) {
+      if (bytedance || musical) {
+        debugMsg = 'CONDITION: TIKTOK WEBVIEW (bytedancewebview or musical_ly detected)\n';
+      } else {
+        debugMsg = 'CONDITION: OTHER WEBVIEW (iOS, not TikTok)\n';
+      }
+    } else {
+      debugMsg = 'CONDITION: IOS (not webview)\n';
+    }
+    debugMsg += 'uaLower.includes(\'bytedancewebview\'): ' + bytedance + '\n';
+    debugMsg += 'uaLower.includes(\'musical_ly\'): ' + musical + '\n';
+    debugMsg += 'navigator.userAgent: ' + ua;
+    document.getElementById('debug-info').textContent = debugMsg;
 })();
 </script>
 </body>
