@@ -153,7 +153,7 @@
 
     if (isWebview(ua)) {
       // Si c'est une webview TikTok, on affiche le message TikTok
-      if (uaLower.includes('tiktok')) {
+      if (uaLower.includes('BytedanceWebview') && (uaLower.includes('iPhone') || uaLower.includes('iPad') || uaLower.includes('iPod'))) {
         tiktokMsg.style.display = 'block';
         androidMsg.style.display = 'none';
         mainContent.style.display = 'none';
@@ -164,8 +164,7 @@
         mainContent.style.display = 'none';
       } else {
         // Autre webview (iOS hors TikTok) : redirection App Store
-        //window.location.href = appStoreUrl;
-        tiktokMsg.style.display = 'block';
+        window.location.href = appStoreUrl;
       }
     } else if (isAndroid) {
       tiktokMsg.style.display = 'none';
@@ -176,7 +175,7 @@
       window.location.href = appStoreUrl;
     }
     // Affiche le user agent dans le bloc ua-info
-    document.getElementById('ua-info').textContent = 'User Agent : ' + navigator.userAgent;
+    //document.getElementById('ua-info').textContent = 'User Agent : ' + navigator.userAgent;
 })();
 </script>
 </body>
