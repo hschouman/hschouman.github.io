@@ -125,31 +125,58 @@
             <a href="https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881" class="download-button">Download App</a>
         </div>
     </div>
+    <div id="ua-info" style="margin-top:40px;font-size:0.9em;color:#888;word-break:break-all;"></div>
 
 <script>
 (function() {
-    var ua = navigator.userAgent.toLowerCase();
-    var isTikTok = ua.includes('tiktok');
-    var isAndroid = ua.includes('android');
-    var isIOS = /iphone|ipad|ipod/.test(ua);
+    var ua = navigator.userAgent;
+    var uaLower = ua.toLowerCase();
+    var isAndroid = uaLower.includes('android');
+    var isIOS = /iphone|ipad|ipod/.test(uaLower);
     var appStoreUrl = 'https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881';
+
+    // Règles de détection webview inspirées du code fourni
+    var webviewRules = [
+      'WebView',
+      '(iPhone|iPod|iPad)(?!.*Safari)',
+      'Android.*(;\\s+wv|Version/\\d.\\d\\s+Chrome/\\d+(\\.0){3})',
+      'Linux; U; Android'
+    ];
+    var webviewRegExp = new RegExp('(' + webviewRules.join('|') + ')', 'i');
+    function isWebview(ua) {
+      return !!ua.match(webviewRegExp);
+    }
 
     var tiktokMsg = document.getElementById('tiktok-message');
     var androidMsg = document.getElementById('android-message');
     var mainContent = document.getElementById('main-content');
 
-    if (isTikTok) {
+    if (isWebview(ua)) {
+      // Si c'est une webview TikTok, on affiche le message TikTok
+      if (uaLower.includes('tiktok')) {
         tiktokMsg.style.display = 'block';
         androidMsg.style.display = 'none';
         mainContent.style.display = 'none';
-    } else if (isAndroid) {
+      } else if (isAndroid) {
+        // Si c'est une webview Android générique
         tiktokMsg.style.display = 'none';
         androidMsg.style.display = 'block';
         mainContent.style.display = 'none';
+      } else {
+        // Autre webview (iOS hors TikTok) : redirection App Store
+        //window.location.href = appStoreUrl;
+        tiktokMsg.style.display = 'block';
+      }
+    } else if (isAndroid) {
+      tiktokMsg.style.display = 'none';
+      androidMsg.style.display = 'block';
+      mainContent.style.display = 'none';
     } else {
-        // iOS (hors TikTok) : redirection
-        window.location.href = appStoreUrl;
+      // iOS (hors webview) : redirection
+      window.location.href = appStoreUrl;
     }
+    // Affiche le user agent dans le bloc ua-info
+    document.getElementById('ua-info').textContent = 'User Agent : ' + navigator.userAgent;
 })();
 </script>
 </body>
