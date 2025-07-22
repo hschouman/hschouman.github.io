@@ -169,11 +169,13 @@
     var tiktokMsg = document.getElementById('tiktok-message');
     var androidMsg = document.getElementById('android-message');
     var mainContent = document.getElementById('main-content');
+    var tiktokArrows = document.getElementById('tiktok-arrows');
 
     if (isAndroid) {
       tiktokMsg.style.display = 'none';
       androidMsg.style.display = 'block';
       mainContent.style.display = 'none';
+      tiktokArrows.style.display = 'none';
     } else if (isWebview(ua)) {
       // Si c'est une webview TikTok, on affiche le message TikTok
       if (uaLower.includes('bytedancewebview') || uaLower.includes('musical_ly')) {
@@ -182,10 +184,16 @@
         mainContent.style.display = 'none';
       } else {
         // Autre webview (iOS hors TikTok) : redirection App Store
+        tiktokArrows.style.display = 'none';
+        androidMsg.style.display = 'none';
+        mainContent.style.display = 'block';
         window.location.href = appStoreUrl;
       }
     } else {
       // iOS (hors webview) : redirection
+      tiktokArrows.style.display = 'none';
+      androidMsg.style.display = 'none';
+      mainContent.style.display = 'block';
       window.location.href = appStoreUrl;
     }
 
