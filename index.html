@@ -109,26 +109,26 @@
 <body>
 
     <div class="container">
-        <div id="tiktok-message" class="info-box" style="display:none; padding-top:60px;">
-            <div style="position:absolute; top:10px; right:18px; z-index:2;">
-                <!-- Flèches SVG style taap.it -->
-                <svg width="38" height="80" viewBox="0 0 38 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
-                  <polyline points="6,20 19,7 32,20" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                  <polyline points="6,40 19,27 32,40" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                  <polyline points="6,60 19,47 32,60" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div style="font-size:1.25rem;font-weight:600;margin-bottom:22px;">To access the link,<br>follow these two simple steps:</div>
-            <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:10px;">
-                <div style="font-weight:500;font-size:1.1rem;border:1.5px solid #bbb;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">1</div>
-                <div style="text-align:left;font-size:1.07rem;line-height:1.45;">
-                    Tap <span class="icon dots-icon" style="vertical-align:middle;"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="8" r="1.7" fill="#8e8e93"/><circle cx="8" cy="8" r="1.7" fill="#8e8e93"/><circle cx="12" cy="8" r="1.7" fill="#8e8e93"/></svg></span> at the top right
+        <!-- Flèches SVG tout en haut à droite de la page -->
+        <div id="tiktok-arrows" style="position:fixed; top:18px; right:22px; z-index:1000; pointer-events:none;">
+            <svg width="38" height="80" viewBox="0 0 38 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <polyline points="6,20 19,7 32,20" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="6,40 19,27 32,40" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="6,60 19,47 32,60" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div id="tiktok-message" style="background:none;box-shadow:none;border:none;display:none;padding-top:90px;padding-bottom:18px;">
+            <div style="font-size:1.45rem;font-weight:700;margin-bottom:22px;text-align:center;">To access the link,<br>follow these two simple steps:</div>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+                <div style="font-weight:500;font-size:1.25rem;border:2px solid #bbb;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;">1</div>
+                <div style="text-align:left;font-size:1.18rem;line-height:1.45;font-weight:400;">
+                    Tap <span class="icon dots-icon" style="vertical-align:middle;"><svg width="26" height="26" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="8" r="1.7" fill="#8e8e93"/><circle cx="8" cy="8" r="1.7" fill="#8e8e93"/><circle cx="12" cy="8" r="1.7" fill="#8e8e93"/></svg></span> at the top right
                 </div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:14px;">
-                <div style="font-weight:500;font-size:1.1rem;border:1.5px solid #bbb;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">2</div>
-                <div style="text-align:left;font-size:1.07rem;line-height:1.45;">
-                    Then tap <span style="color:#24b47e;font-weight:600;">"Open in browser"</span>
+            <div style="display:flex;align-items:center;gap:14px;">
+                <div style="font-weight:500;font-size:1.25rem;border:2px solid #bbb;border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;">2</div>
+                <div style="text-align:left;font-size:1.18rem;line-height:1.45;font-weight:400;">
+                    Then tap <span style="color:#24b47e;font-weight:700;">"Open in browser"</span>
                 </div>
             </div>
         </div>
