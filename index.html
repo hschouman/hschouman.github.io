@@ -109,24 +109,42 @@
 <body>
 
     <div class="container">
-        <div id="tiktok-message" class="info-box" style="display:none;">
-            On <img src="tiktok.png" alt="TikTok" class="icon tiktok-icon">, tap <span class="icon dots-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="8" r="1.5" fill="#8e8e93"/><circle cx="8" cy="8" r="1.5" fill="#8e8e93"/><circle cx="12" cy="8" r="1.5" fill="#8e8e93"/></svg></span> then tap "Open in browser" to download the app for free.
+        <div id="tiktok-message" class="info-box" style="display:none; padding-top:60px;">
+            <div style="position:absolute; top:10px; right:18px; z-index:2;">
+                <!-- Flèches SVG style taap.it -->
+                <svg width="38" height="80" viewBox="0 0 38 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                  <polyline points="6,20 19,7 32,20" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="6,40 19,27 32,40" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="6,60 19,47 32,60" stroke="#222" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div style="font-size:1.25rem;font-weight:600;margin-bottom:22px;">To access the link,<br>follow these two simple steps:</div>
+            <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:10px;">
+                <div style="font-weight:500;font-size:1.1rem;border:1.5px solid #bbb;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">1</div>
+                <div style="text-align:left;font-size:1.07rem;line-height:1.45;">
+                    Tap <span class="icon dots-icon" style="vertical-align:middle;"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="8" r="1.7" fill="#8e8e93"/><circle cx="8" cy="8" r="1.7" fill="#8e8e93"/><circle cx="12" cy="8" r="1.7" fill="#8e8e93"/></svg></span> at the top right
+                </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:14px;">
+                <div style="font-weight:500;font-size:1.1rem;border:1.5px solid #bbb;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">2</div>
+                <div style="text-align:left;font-size:1.07rem;line-height:1.45;">
+                    Then tap <span style="color:#24b47e;font-weight:600;">"Open in browser"</span>
+                </div>
+            </div>
         </div>
 
         <div id="android-message" class="info-box" style="display:none;">
             The Soothy app is not available on Android yet.<br>Stay tuned, it's coming soon!
         </div>
 
-        <div id="main-content">
-            <div class="app-icon">
+        <div id="main-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <div class="app-icon" style="margin:0 auto 32px auto;">
                 <img src="soothy-icon.png" alt="Soothy App Icon">
             </div>
-            <h1>Search "Soothy" on the <br>App Store</h1>
-            <a href="https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881" class="download-button">Download App</a>
+            <h1 style="font-size:2.2rem;font-weight:700;margin:0 0 32px 0;line-height:1.13;text-align:center;">Search "Soothy" on the <br>App Store</h1>
+            <a href="https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881" class="download-button" style="margin-top:0;">Download App</a>
         </div>
     </div>
-    <div id="ua-info" style="margin-top:40px;font-size:0.9em;color:#888;word-break:break-all;"></div>
-    <div id="debug-info" style="margin-top:10px;font-size:0.95em;color:#b00;background:#ffeaea;padding:10px;border-radius:8px;max-width:500px;word-break:break-all;"></div>
 
 <script>
 (function() {
@@ -170,27 +188,7 @@
       // iOS (hors webview) : redirection
       window.location.href = appStoreUrl;
     }
-    // Affiche le user agent dans le bloc ua-info
-    //document.getElementById('ua-info').textContent = 'User Agent : ' + navigator.userAgent;
-    // Debug info
-    var debugMsg = '';
-    var bytedance = uaLower.includes('bytedancewebview');
-    var musical = uaLower.includes('musical_ly');
-    if (isAndroid) {
-      debugMsg = 'CONDITION: ANDROID\n';
-    } else if (isWebview(ua)) {
-      if (bytedance || musical) {
-        debugMsg = 'CONDITION: TIKTOK WEBVIEW (bytedancewebview or musical_ly detected)\n';
-      } else {
-        debugMsg = 'CONDITION: OTHER WEBVIEW (iOS, not TikTok)\n';
-      }
-    } else {
-      debugMsg = 'CONDITION: IOS (not webview)\n';
-    }
-    debugMsg += 'uaLower.includes(\'bytedancewebview\'): ' + bytedance + '\n';
-    debugMsg += 'uaLower.includes(\'musical_ly\'): ' + musical + '\n';
-    debugMsg += 'navigator.userAgent: ' + ua;
-    document.getElementById('debug-info').textContent = debugMsg;
+
 })();
 </script>
 </body>
