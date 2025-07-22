@@ -157,6 +157,10 @@
             <h1 style="font-size:2.2rem;font-weight:700;margin:0 0 32px 0;line-height:1.13;text-align:center;">Search "Soothy" on the <br>App Store</h1>
             <a href="https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881" class="download-button" style="margin-top:0;">Download App</a>
         </div>
+
+        <div id="redirect-content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            Redirecting to App Store...
+        </div>
     </div>
 
 <script>
@@ -164,52 +168,34 @@
     var ua = navigator.userAgent;
     var uaLower = ua.toLowerCase();
     var isAndroid = uaLower.includes('android');
-    var isIOS = /iphone|ipad|ipod/.test(uaLower);
+    var isTiktok = uaLower.includes('bytedancewebview') || uaLower.includes('musical_ly')
     var appStoreUrl = 'https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881';
-
-    // Règles de détection webview inspirées du code fourni
-    var webviewRules = [
-      'WebView',
-      '(iPhone|iPod|iPad)(?!.*Safari)',
-      'Android.*(;\\s+wv|Version/\\d.\\d\\s+Chrome/\\d+(\\.0){3})',
-      'Linux; U; Android'
-    ];
-    var webviewRegExp = new RegExp('(' + webviewRules.join('|') + ')', 'i');
-    function isWebview(ua) {
-      return !!ua.match(webviewRegExp);
-    }
 
     var tiktokMsg = document.getElementById('tiktok-message');
     var androidMsg = document.getElementById('android-message');
     var mainContent = document.getElementById('main-content');
     var tiktokArrows = document.getElementById('tiktok-arrows');
+    var redirectContent = document.getElementById('redirect-content');
 
     if (isAndroid) {
       tiktokMsg.style.display = 'none';
       androidMsg.style.display = 'block';
       mainContent.style.display = 'none';
       tiktokArrows.style.display = 'none';
-    } else if (isWebview(ua)) {
-      // Si c'est une webview TikTok, on affiche le message TikTok
-      if (uaLower.includes('bytedancewebview') || uaLower.includes('musical_ly')) {
+      redirectContent.style.display = 'none';
+    } else if (isTiktok) {
         tiktokMsg.style.display = 'block';
+        tiktokArrows.style.display = 'block';
         androidMsg.style.display = 'none';
         mainContent.style.display = 'none';
+        redirectContent.style.display = 'none';
       } else {
-        // Autre webview (iOS hors TikTok) : redirection App Store
         tiktokArrows.style.display = 'none';
         androidMsg.style.display = 'none';
-        mainContent.style.display = 'block';
+        mainContent.style.display = 'none';
+        redirectContent.style.display = 'block';
         window.location.href = appStoreUrl;
       }
-    } else {
-      // iOS (hors webview) : redirection
-      tiktokArrows.style.display = 'none';
-      androidMsg.style.display = 'none';
-      mainContent.style.display = 'block';
-      window.location.href = appStoreUrl;
-    }
-
 })();
 </script>
 </body>
