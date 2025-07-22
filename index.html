@@ -109,18 +109,48 @@
 <body>
 
     <div class="container">
-        <div class="info-box">
-            On <img src="tiktok.png" alt="TikTok" class="icon tiktok-icon"> you need to tap on the <span class="icon dots-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="8" r="1.5" fill="#8e8e93"/><circle cx="8" cy="8" r="1.5" fill="#8e8e93"/><circle cx="12" cy="8" r="1.5" fill="#8e8e93"/></svg></span> and then tap on "Open in browser" to download the app for free.
+        <div id="tiktok-message" class="info-box" style="display:none;">
+            Sur <img src="tiktok.png" alt="TikTok" class="icon tiktok-icon">, tu dois appuyer sur <span class="icon dots-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="4" cy="8" r="1.5" fill="#8e8e93"/><circle cx="8" cy="8" r="1.5" fill="#8e8e93"/><circle cx="12" cy="8" r="1.5" fill="#8e8e93"/></svg></span> puis sur "Ouvrir dans le navigateur" pour télécharger l'app gratuitement.
         </div>
 
-        <div class="app-icon">
-            <img src="soothy-icon.png" alt="Soothy App Icon">
+        <div id="android-message" class="info-box" style="display:none;">
+            L'application Soothy n'est pas encore disponible sur Android.<br>Reste connecté, elle arrive bientôt !
         </div>
 
-        <h1>Search "Soothy" on the <br>App Store</h1>
-
-        <a href="https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881" class="download-button">Download App</a>
+        <div id="main-content">
+            <div class="app-icon">
+                <img src="soothy-icon.png" alt="Soothy App Icon">
+            </div>
+            <h1>Search "Soothy" on the <br>App Store</h1>
+            <a href="https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881" class="download-button">Download App</a>
+        </div>
     </div>
 
+<script>
+(function() {
+    var ua = navigator.userAgent.toLowerCase();
+    var isTikTok = ua.includes('tiktok');
+    var isAndroid = ua.includes('android');
+    var isIOS = /iphone|ipad|ipod/.test(ua);
+    var appStoreUrl = 'https://apps.apple.com/us/app/soothy-baby-sleep-sounds/id6482288881';
+
+    var tiktokMsg = document.getElementById('tiktok-message');
+    var androidMsg = document.getElementById('android-message');
+    var mainContent = document.getElementById('main-content');
+
+    if (isTikTok) {
+        tiktokMsg.style.display = 'block';
+        androidMsg.style.display = 'none';
+        mainContent.style.display = 'none';
+    } else if (isAndroid) {
+        tiktokMsg.style.display = 'none';
+        androidMsg.style.display = 'block';
+        mainContent.style.display = 'none';
+    } else {
+        // iOS (hors TikTok) : redirection
+        window.location.href = appStoreUrl;
+    }
+})();
+</script>
 </body>
 </html>
