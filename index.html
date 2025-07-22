@@ -151,25 +151,20 @@
     var androidMsg = document.getElementById('android-message');
     var mainContent = document.getElementById('main-content');
 
-    if (isWebview(ua)) {
+    if (isAndroid) {
+      tiktokMsg.style.display = 'none';
+      androidMsg.style.display = 'block';
+      mainContent.style.display = 'none';
+    } else if (isWebview(ua)) {
       // Si c'est une webview TikTok, on affiche le message TikTok
-      if (uaLower.includes('BytedanceWebview') && (uaLower.includes('iPhone') || uaLower.includes('iPad') || uaLower.includes('iPod'))) {
+      if (uaLower.includes('bytedancewebview') || uaLower.includes('musical_ly')) {
         tiktokMsg.style.display = 'block';
         androidMsg.style.display = 'none';
-        mainContent.style.display = 'none';
-      } else if (isAndroid) {
-        // Si c'est une webview Android générique
-        tiktokMsg.style.display = 'none';
-        androidMsg.style.display = 'block';
         mainContent.style.display = 'none';
       } else {
         // Autre webview (iOS hors TikTok) : redirection App Store
         window.location.href = appStoreUrl;
       }
-    } else if (isAndroid) {
-      tiktokMsg.style.display = 'none';
-      androidMsg.style.display = 'block';
-      mainContent.style.display = 'none';
     } else {
       // iOS (hors webview) : redirection
       window.location.href = appStoreUrl;
